@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page de garde Chiffre à chiffre</title>
+<meta name="description" content="Missions de calcul posé pour le primaire : multiplication, division et priorité des opérations, un chiffre à la fois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Atkinson+Hyperlegible+Mono:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+.brand { text-decoration: none; color: var(--ink); }
+.cnav { display: flex; align-items: center; gap: 6px; }
+.cnav a:not(.btn) { color: var(--ink-2); text-decoration: none; font-weight: 700; padding: 8px 12px; border-radius: 8px; }
+.cnav a:not(.btn):hover { background: rgba(255,255,255,.8); color: var(--ink); }
+.cover-hero { padding-top: 34px; padding-bottom: 28px; }
+.kicker { font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--m-div); margin-bottom: 12px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.facts { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--ink-2); font-size: 15px; }
+.facts li::before { content: "✓ "; color: var(--ok); font-weight: 700; }
+.sec { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-top: 44px; }
+.sec-lead { color: var(--ink-2); margin: 6px 0 20px; max-width: 60ch; }
+.mcard h3 { font-size: 28px; font-weight: 800; }
+.ex-sheet { background: #fff; border: 1px solid var(--grid); border-radius: 10px; padding: 12px 6px; margin: 6px 0; display: flex; justify-content: center; overflow: hidden; min-height: 190px; align-items: center; }
+.ex-sheet .exprs { padding: 6px 0; }
+.ex-sheet .ex-line { font-size: 20px; min-height: 36px; }
+.ex-sheet .ex-line.past { font-size: 18px; }
+.steps { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.steps li { background: var(--sheet); border: 2px solid var(--ink); border-radius: var(--radius); padding: 18px; box-shadow: 0 5px 0 var(--ink); }
+.steps h3 { font-size: 22px; margin: 10px 0 6px; }
+.steps p { color: var(--ink-2); font-size: 16px; }
+.sn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--hl); border: 2px solid var(--ink); font: 800 20px/1 var(--font-d); }
+.teach { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 28px; align-items: start; margin-top: 10px; }
+.tlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.tlist li { background: var(--sheet); border: 2px solid var(--grid); border-radius: 12px; padding: 12px 14px; }
+.tlist b { display: block; font-size: 18px; }
+.tcard { background: var(--sheet); border: 2px solid var(--ink); border-radius: var(--radius); padding: 20px; box-shadow: 0 5px 0 var(--ink); display: grid; gap: 12px; justify-items: start; margin-top: 44px; }
+.tcard h3 { font-size: 24px; }
+.tcard p { color: var(--ink-2); }
+.tlink { font: 600 15px var(--font-n); background: #F4F8FC; border: 1px dashed var(--grid); border-radius: 8px; padding: 8px 12px; color: var(--ink) !important; }
+.final { text-align: center; display: grid; justify-items: center; gap: 16px; padding: 56px 16px 40px; }
+.final h2 { font-size: clamp(28px, 4.4vw, 44px); font-weight: 800; }
+@media (max-width: 880px) {
+  .steps, .teach { grid-template-columns: 1fr; }
+  .tcard { margin-top: 0; }
+  .cnav a:not(.btn) { display: none; }
+}
+a.btn { text-decoration: none; color: var(--ink); }
+a.btn-primary { color: #fff; }
+.foot a { color: var(--ink-2); font-weight: 700; }
+
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="#haut" aria-label="Chiffre à chiffre"><svg class="brand-mark" viewBox="0 0 38 38" aria-hidden="true"><rect x="2" y="2" width="34" height="34" rx="8" fill="#fff"/><path d="M13.5 2v34M24.5 2v34M2 13.5h34M2 24.5h34" stroke="#C6DAEA" stroke-width="1.5"/><rect x="14.5" y="14.5" width="9" height="9" fill="#FFD23F"/><rect x="2" y="2" width="34" height="34" rx="8" fill="none" stroke="#12203A" stroke-width="2.5"/></svg><span class="brand-name"><span>Chiffre</span> à chiffre</span></a>
+  <nav class="cnav" aria-label="Sections"><a href="#missions">Missions</a><a href="#methode">Méthode</a><a href="#enseignants">Enseignants</a><a class="btn btn-primary btn-small" href="jeu.html">Commencer</a></nav>
+</header>
+
+<main id="haut">
+<section class="wrap hero cover-hero">
+  <div>
+    <p class="kicker">Calcul posé · 3<sup>e</sup> à 6<sup>e</sup> année</p>
+    <h1>Pose-le, <em>chiffre à chiffre</em>.</h1>
+    <p class="lead">Trois missions pour apprendre la multiplication, la division et la priorité des opérations sur du papier quadrillé. Chaque mission commence par un exemple animé, puis l’élève calcule à son tour.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="jeu.html">Commencer les missions →</a><a class="btn" href="#methode">Voir comment ça marche</a></div>
+    <ul class="facts"><li>Gratuit, sans compte</li><li>Fonctionne sur ordinateur, tablette et téléphone</li><li>Entièrement en français</li></ul>
+  </div>
+  <div class="hero-sheet" id="ex-hero"></div>
+</section>
+
+<section class="wrap" id="missions">
+  <h2 class="sec">Trois missions</h2>
+  <p class="sec-lead">Chacune compte quatre niveaux, de Recrue à Maître.</p>
+  <div class="missions">
+    <article class="mcard" data-m="mult"><div class="mcard-top"><span>Mission 1</span></div><div class="mcard-body"><h3>Le Coffre</h3><p class="sub">Multiplication posée</p><div class="ex-sheet" id="ex-mult"></div><p class="pitch">Retenues, décalage par des zéros et addition des lignes, du 2 chiffres × 1 chiffre jusqu’au 3 × 2 chiffres.</p></div></article>
+    <article class="mcard" data-m="div"><div class="mcard-top"><span>Mission 2</span></div><div class="mcard-body"><h3>Le Partage</h3><p class="sub">Division posée</p><div class="ex-sheet" id="ex-div"></div><p class="pitch">Diviser, multiplier, soustraire, abaisser. Une flèche montre quel chiffre descend. Avec reste et diviseurs à 2 chiffres.</p></div></article>
+    <article class="mcard" data-m="ops"><div class="mcard-top"><span>Mission 3</span></div><div class="mcard-body"><h3>Le Code</h3><p class="sub">Priorité des opérations</p><div class="ex-sheet" id="ex-ops"></div><p class="pitch">Parenthèses, puis × et ÷, puis + et −. L’élève choisit l’opération à faire en premier et réécrit l’expression ligne par ligne.</p></div></article>
+  </div>
+</section>
+
+<section class="wrap" id="methode">
+  <h2 class="sec">Comment ça marche</h2>
+  <ol class="steps">
+    <li><span class="sn">1</span><h3>Regarder l’exemple</h3><p>Avant chaque mission, un exemple se déroule étape par étape, avec une explication à chaque chiffre. Lecture automatique, retour en arrière et « tout voir » sont possibles.</p></li>
+    <li><span class="sn">2</span><h3>Taper chaque chiffre</h3><p>La case jaune indique où écrire. L’élève tape son chiffre au clavier et la case suivante s’active, comme sur du papier quadrillé.</p></li>
+    <li><span class="sn">3</span><h3>Gagner des étoiles</h3><p>Chaque problème rapporte jusqu’à trois étoiles. À la fin, un bilan montre les réussites et propose le niveau suivant.</p></li>
+  </ol>
+</section>
+
+<section class="wrap" id="enseignants">
+  <div class="teach">
+    <div>
+      <h2 class="sec">Pour l’enseignante et l’enseignant</h2>
+      <p class="sec-lead">Choisissez le niveau d’aide, puis partagez un lien. L’élève arrive directement sur l’exemple.</p>
+      <ul class="tlist">
+        <li><b>Complet</b> Le coach explique chaque étape et donne un indice après deux essais.</li>
+        <li><b>Partiel</b> La case à remplir est surlignée. Un bouton Indice aide au besoin.</li>
+        <li><b>Autonome</b> Toutes les cases sont libres. L’élève vérifie à la fin.</li>
+      </ul>
+    </div>
+    <div class="tcard">
+      <h3>Un lien par activité</h3>
+      <p>Mission, niveau, soutien et nombre de problèmes se règlent dans l’Espace enseignant. Le lien se colle dans un courriel, une plateforme de classe ou un site.</p>
+      <p class="tlink">…/#div-3-complet-5</p>
+      <a class="btn btn-small" href="jeu.html">Ouvrir l’espace enseignant</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap final">
+  <h2>Prêt pour la première mission ?</h2>
+  <a class="btn btn-primary" href="jeu.html">Commencer les missions →</a>
+</section>
+</main>
+
+<footer class="wrap foot"><span>Inspiré de Digit Drills. Les étoiles et le prénom restent dans le navigateur de l’élève.</span><a href="#haut">Retour en haut ↑</a></footer>
+
+<script>
+/* ===== Moteur : génération de problèmes, grilles et étapes ===== */
+(function (root) {
+  'use strict';
+
+  const POS = ['unités', 'dizaines', 'centaines', 'milliers', 'dizaines de mille', 'centaines de mille'];
+  const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const digitsOf = (n) => String(n).split('').map(Number);
+  const plural = (n, s, p) => (n > 1 ? p : s);
+
+  function newLayout() {
+    return { cells: {}, rowKinds: [], lines: [], steps: [], groups: [], cols: 0 };
+  }
+  function put(L, r, c, o) {
+    if (c < 0) throw new Error('colonne négative ' + r + ',' + c);
+    L.cells[r + ',' + c] = Object.assign({ r: r, c: c }, o);
+  }
+  // Ajoute un groupe d'étapes (une opération "mentale" qui écrit 1 à 3 chiffres)
+  function addGroup(L, text, stepDefs, intro) {
+    const gid = L.groups.length;
+    L.groups.push({ text: text, steps: [], intro: intro || '' });
+    stepDefs.forEach((s) => {
+      const idx = L.steps.length;
+      L.steps.push({ r: s.r, c: s.c, expected: s.exp, ask: s.ask, hint: s.hint, gid: gid });
+      L.groups[gid].steps.push(idx);
+      put(L, s.r, s.c, { kind: s.kind || 'input', expected: s.exp, cls: s.cls || '' });
+    });
+  }
+
+  /* ---------------- MULTIPLICATION ---------------- */
+  function buildMult(a, b) {
+    const L = newLayout();
+    const A = digitsOf(a), B = digitsOf(b), n = A.length, m = B.length;
+    const prod = a * b, Ln = String(prod).length, W = n + m;
+    L.cols = W + 1;
+
+    // plan de chaque ligne de produit partiel
+    const plan = [];
+    const ppMap = []; // ppMap[k][col] = chiffre attendu
+    for (let k = 0; k < m; k++) {
+      const bk = B[m - 1 - k];
+      const groups = [];
+      ppMap[k] = {};
+      const intro = k === 0
+        ? 'On multiplie d’abord par les unités du multiplicateur (' + bk + '), de droite à gauche.'
+        : 'Nouvelle ligne : on multiplie par les ' + POS[k] + ' (' + bk + ').';
+      let first = true;
+      const withIntro = (t) => { if (first) { first = false; return intro + ' ' + t; } return t; };
+      if (k > 0) {
+        const zs = [];
+        for (let j = 0; j < k; j++) {
+          zs.push({
+            kind: 'pp', col: W - j, exp: 0,
+            ask: j === 0 ? withIntro('On décale d’un rang pour chaque position : écris ' + (k === 1 ? 'un 0' : k + ' zéros') + ', en commençant à droite.') : 'Encore un 0 pour décaler.',
+            hint: 'Multiplier par ' + bk + '0'.repeat(k) + ' revient à décaler : on écrit d’abord ' + (k === 1 ? 'un 0' : k + ' zéros') + '.'
+          });
+          ppMap[k][W - j] = 0;
+        }
+        groups.push({ text: 'On multiplie par les ' + POS[k] + ' : on écrit ' + (k === 1 ? 'un 0' : k + ' zéros') + ' pour décaler la ligne.', steps: zs });
+      }
+      let carry = 0;
+      for (let i = 0; i < n; i++) {
+        const ai = A[n - 1 - i];
+        const p = ai * bk + carry;
+        const dg = p % 10, nc = Math.floor(p / 10);
+        const op = bk + ' × ' + ai + (carry ? ' + ' + carry : '');
+        const last = i === n - 1;
+        const col = W - k - i;
+        const st = [];
+        const calc = 'Calcule ' + op + (carry ? ' (n’oublie pas la retenue)' : '') + '. ';
+        if (last && nc > 0) {
+          st.push({ kind: 'pp', col: col, exp: dg, ask: withIntro(calc + 'Écris le chiffre des unités du résultat.'), hint: op + ' = ' + p });
+          st.push({ kind: 'pp', col: col - 1, exp: nc, ask: 'Écris maintenant le chiffre des dizaines, juste à gauche.', hint: op + ' = ' + p });
+          ppMap[k][col] = dg; ppMap[k][col - 1] = nc;
+          groups.push({ text: op + ' = ' + p + '. C’est le dernier chiffre : on écrit tout le résultat, ' + p + '.', steps: st });
+        } else {
+          st.push({ kind: 'pp', col: col, exp: dg, ask: withIntro(calc + (p >= 10 ? 'Écris le chiffre des unités du résultat.' : 'Écris le résultat.')), hint: op + ' = ' + p });
+          ppMap[k][col] = dg;
+          if (!last && nc > 0) {
+            st.push({ kind: 'carry', col: col - 1, exp: nc, ask: 'Écris la retenue (le chiffre des dizaines du résultat) au-dessus de la colonne suivante.', hint: op + ' = ' + p + ' : la retenue est ' + nc + '.' });
+            groups.push({ text: op + ' = ' + p + '. On écrit ' + dg + ' et on retient ' + nc + '.', steps: st });
+          } else {
+            groups.push({ text: op + ' = ' + p + '. On écrit ' + dg + '.', steps: st });
+          }
+        }
+        carry = nc;
+      }
+      if (groups.length) groups[0].intro = intro;
+      const hasCarry = groups.some((g) => g.steps.some((s) => s.kind === 'carry'));
+      plan.push({ groups: groups, hasCarry: hasCarry });
+    }
+
+    // lignes 0 et 1 : multiplicande et multiplicateur
+    L.rowKinds.push('norm');
+    A.forEach((d, i) => put(L, 0, W - (n - 1 - i), { kind: 'static', text: d }));
+    L.rowKinds.push('norm');
+    put(L, 1, 0, { kind: 'static', text: '×' });
+    B.forEach((d, i) => put(L, 1, W - (m - 1 - i), { kind: 'static', text: d }));
+    L.lines.push({ r: 1, c1: 0, c2: W });
+
+    let lastPP = 1;
+    for (let k = 0; k < m; k++) {
+      let carryRow = -1;
+      if (plan[k].hasCarry) { carryRow = L.rowKinds.length; L.rowKinds.push('carry'); }
+      const ppRow = L.rowKinds.length; L.rowKinds.push('norm');
+      lastPP = ppRow;
+      plan[k].groups.forEach((g) => {
+        addGroup(L, g.text, g.steps.map((s) => ({
+          r: s.kind === 'carry' ? carryRow : ppRow, c: s.col, exp: s.exp, ask: s.ask, hint: s.hint,
+          kind: 'input', cls: s.kind === 'carry' ? 'carry' : ''
+        })), g.intro);
+      });
+    }
+
+    if (m > 1) {
+      L.lines.push({ r: lastPP, c1: 0, c2: W });
+      const resRow = L.rowKinds.length; L.rowKinds.push('norm');
+      let carryAdd = 0;
+      for (let j = 0; j < Ln; j++) {
+        const col = W - j;
+        const parts = [];
+        for (let k = 0; k < m; k++) if (ppMap[k][col] !== undefined) parts.push(ppMap[k][col]);
+        const total = parts.reduce((x, y) => x + y, 0) + carryAdd;
+        const dg = total % 10, nc = Math.floor(total / 10);
+        const expr = parts.join(' + ') + (carryAdd ? ' + ' + carryAdd + ' (retenue)' : '');
+        let ask, text;
+        if (parts.length === 1 && !carryAdd) {
+          ask = 'Un seul chiffre dans la colonne des ' + POS[j] + ' : recopie-le.';
+          text = 'On descend ' + total + '.';
+        } else {
+          ask = 'Additionne la colonne des ' + POS[j] + ' : ' + expr + '. ' + (total >= 10 && j < Ln - 1 ? 'Écris le chiffre des unités et retiens le reste.' : 'Écris le résultat.');
+          text = expr + ' = ' + total + '. ' + (nc > 0 && j < Ln - 1 ? 'On écrit ' + dg + ' et on retient ' + nc + '.' : 'On écrit ' + total + '.');
+        }
+        if (j === Ln - 1) { if (nc !== 0) throw new Error('somme finale invalide'); }
+        addGroup(L, text, [{ r: resRow, c: col, exp: dg, ask: (j === 0 ? 'Il reste à additionner les lignes, colonne par colonne, de droite à gauche. ' : '') + ask, hint: expr + ' = ' + total, kind: 'input', cls: 'result' }], j === 0 ? 'Il reste \u00e0 additionner les lignes, colonne par colonne, de droite \u00e0 gauche.' : '');
+        carryAdd = nc;
+      }
+    } else {
+      // pour m = 1, la ligne de produit est le résultat
+      Object.keys(L.cells).forEach((k) => { const c = L.cells[k]; if (c.r === lastPP && c.kind === 'input') c.cls = 'result'; });
+    }
+
+    L.rows = L.rowKinds.length;
+    L.statement = a + ' × ' + b;
+    L.answerText = String(prod);
+    L.meta = { type: 'mult', a: a, b: b, answer: prod };
+    return L;
+  }
+
+  function genMult(level) {
+    const cfg = { 1: [2, 1], 2: [3, 1], 3: [2, 2], 4: [3, 2] }[level];
+    const n = cfg[0], m = cfg[1];
+    let a = '';
+    for (let i = 0; i < n; i++) a += i === 0 ? rnd(2, 9) : (level === 4 && i < n - 1 && Math.random() < 0.2 ? 0 : rnd(1, 9));
+    let b = '';
+    for (let i = 0; i < m; i++) b += rnd(2, 9);
+    return buildMult(parseInt(a, 10), parseInt(b, 10));
+  }
+
+  /* ---------------- DIVISION ---------------- */
+  function buildDiv(D, v) {
+    const L = newLayout();
+    const Dd = digitsOf(D), nd = Dd.length, V = digitsOf(v), nv = V.length;
+    let t = nv;
+    if (parseInt(Dd.slice(0, t).join(''), 10) < v) t++;
+    if (t > nd) throw new Error('dividende trop petit');
+    const sim = [];
+    let partial = parseInt(Dd.slice(0, t).join(''), 10), pIdx = t - 1, partialLen = t, nextIdx = t;
+    for (;;) {
+      const q = Math.floor(partial / v);
+      if (q < 1 || q > 9) throw new Error('chiffre du quotient invalide');
+      const prod = q * v, rem = partial - prod;
+      const s = { partial: partial, partialLen: partialLen, q: q, prod: prod, rem: rem, pIdx: pIdx };
+      sim.push(s);
+      if (nextIdx >= nd) break;
+      s.next = Dd[nextIdx];
+      partial = rem * 10 + s.next;
+      s.nextPartial = partial;
+      partialLen = String(rem).length + 1;
+      pIdx = nextIdx;
+      nextIdx++;
+    }
+    const nq = sim.length;
+    const quotient = parseInt(sim.map((s) => s.q).join(''), 10);
+    const remainder = sim[nq - 1].rem;
+    if (quotient !== Math.floor(D / v) || remainder !== D % v) throw new Error('division incohérente');
+
+    // Disposition ontarienne : diviseur à gauche, dividende sous la potence, quotient au-dessus du dividende.
+    const dStart = nv + 1;
+    L.cols = dStart + nd;
+    L.rows = 2 + 2 * nq;
+    for (let i = 0; i < L.rows; i++) L.rowKinds.push('norm');
+    L.bar = { col: dStart, fromRow: 1 };
+    L.downs = [];
+    L.lines.push({ r: 0, c1: dStart, c2: dStart + nd - 1 });
+    V.forEach((d, i) => put(L, 1, i, { kind: 'static', text: d }));
+    Dd.forEach((d, i) => put(L, 1, dStart + i, { kind: 'static', text: d }));
+
+    sim.forEach((s, j) => {
+      const pCol = dStart + s.pIdx;
+      const prodS = String(s.prod), remS = String(s.rem);
+      const prodRow = 2 * j + 2, remRow = 2 * j + 3;
+      put(L, prodRow, pCol - s.partialLen, { kind: 'static', text: '−' });
+      L.lines.push({ r: prodRow, c1: pCol - s.partialLen, c2: pCol });
+
+      addGroup(L, 'Dans ' + s.partial + ', ' + v + ' entre ' + s.q + (s.q > 1 ? ' fois' : ' fois') + ' (' + s.q + ' × ' + v + ' = ' + s.prod + ', sans dépasser ' + s.partial + ').', [{
+        r: 0, c: pCol, exp: s.q, kind: 'input', cls: 'quot',
+        ask: 'Combien de fois ' + v + ' entre-t-il dans ' + s.partial + ' ? Écris ce chiffre au-dessus du dernier chiffre de ' + s.partial + '.',
+        hint: s.q + ' × ' + v + ' = ' + s.prod + ' ne dépasse pas ' + s.partial + '.'
+      }]);
+
+      const pd = prodS.split('').map(Number);
+      const prodSteps = [];
+      for (let i = pd.length - 1, first = true; i >= 0; i--, first = false) {
+        prodSteps.push({
+          r: prodRow, c: pCol - (pd.length - 1 - i), exp: pd[i], kind: 'input',
+          ask: first ? 'Multiplie ' + s.q + ' × ' + v + ', puis écris le résultat sous ' + s.partial + ', en commençant par la droite.' : 'Continue ton résultat vers la gauche.',
+          hint: s.q + ' × ' + v + ' = ' + s.prod
+        });
+      }
+      addGroup(L, s.q + ' × ' + v + ' = ' + s.prod + '. On l’écrit sous ' + s.partial + '.', prodSteps);
+
+      const rd = remS.split('').map(Number);
+      const remSteps = [];
+      for (let i = rd.length - 1, first = true; i >= 0; i--, first = false) {
+        remSteps.push({
+          r: remRow, c: pCol - (rd.length - 1 - i), exp: rd[i], kind: 'input', cls: j === nq - 1 ? 'result' : '',
+          ask: first ? 'Soustrais ' + s.partial + ' − ' + s.prod + '. Écris la différence en commençant par la droite.' : 'Continue vers la gauche.',
+          hint: s.partial + ' − ' + s.prod + ' = ' + s.rem
+        });
+      }
+      addGroup(L, s.partial + ' − ' + s.prod + ' = ' + s.rem + '. Le reste (' + s.rem + ') est plus petit que ' + v + ' : c’est bon.', remSteps);
+
+      if (j < nq - 1) {
+        L.downs.push({ c: pCol + 1, toR: remRow, key: remRow + ',' + (pCol + 1) });
+        addGroup(L, 'On abaisse le ' + s.next + ' : on obtient ' + s.nextPartial + '.', [{
+          r: remRow, c: pCol + 1, exp: s.next, kind: 'input',
+          ask: 'Abaisse le chiffre suivant du dividende (suis la flèche) : écris-le à droite du reste.',
+          hint: 'Le chiffre à abaisser est ' + s.next + '.'
+        }]);
+      }
+    });
+
+    L.statement = D + ' ÷ ' + v;
+    L.answerText = quotient + (remainder ? ' reste ' + remainder : '');
+    L.meta = { type: 'div', D: D, v: v, quotient: quotient, remainder: remainder };
+    return L;
+  }
+
+  function noZeroDigits(n) { return String(n).indexOf('0') === -1; }
+  function genNoZero(lo, hi) { for (let i = 0; i < 500; i++) { const x = rnd(lo, hi); if (noZeroDigits(x)) return x; } return lo; }
+
+  function genDiv(level) {
+    for (let tries = 0; tries < 200; tries++) {
+      let v, q, r = 0;
+      if (level === 1) { v = rnd(2, 4); q = genNoZero(11, 99); if (q * v >= 100) continue; }
+      else if (level === 2) { v = rnd(2, 9); q = genNoZero(11, 99); if (q * v < 100) continue; }
+      else if (level === 3) { v = rnd(3, 9); q = genNoZero(111, 999); r = rnd(1, v - 1); }
+      else { do { v = rnd(12, 49); } while (v % 10 === 0); q = genNoZero(11, 99); r = Math.random() < 0.5 ? 0 : rnd(1, v - 1); }
+      try { return buildDiv(q * v + r, v); } catch (e) { /* on retente */ }
+    }
+    return buildDiv(384, 8);
+  }
+
+  /* ---------------- PRIORITÉ DES OPÉRATIONS ---------------- */
+  const MD = { '×': 1, '÷': 1 };
+
+  function parseExpr(s) {
+    return s.split(/\s+/).filter(Boolean).map((x) => (x === '(' || x === ')') ? { t: x } : /^\d+$/.test(x) ? { t: 'n', v: +x } : { t: 'o', v: x });
+  }
+  function exprToString(tokens) { return tokens.map((t) => t.t === 'n' || t.t === 'o' ? t.v : t.t).join(' '); }
+
+  function groupsOf(tokens) {
+    const st = [], out = [];
+    tokens.forEach((tk, i) => {
+      if (tk.t === '(') { st.push({ start: i, child: false }); if (st.length > 1) st[st.length - 2].child = true; }
+      else if (tk.t === ')') { const g = st.pop(); out.push({ start: g.start, end: i, inner: !g.child }); }
+    });
+    return out;
+  }
+  function pickInSlice(tokens, s, e) {
+    const ops = [];
+    for (let i = s; i <= e; i++) if (tokens[i].t === 'o') ops.push(i);
+    const md = ops.filter((i) => MD[tokens[i].v]);
+    return md.length ? md[0] : ops[0];
+  }
+  function validOps(tokens) {
+    const set = new Set();
+    const gs = groupsOf(tokens).filter((g) => g.inner);
+    if (gs.length) gs.forEach((g) => { const i = pickInSlice(tokens, g.start + 1, g.end - 1); if (i !== undefined) set.add(i); });
+    else { const i = pickInSlice(tokens, 0, tokens.length - 1); if (i !== undefined) set.add(i); }
+    return set;
+  }
+  function cleanParens(tokens) {
+    let changed = true;
+    let out = tokens.slice();
+    let removed = false;
+    while (changed) {
+      changed = false;
+      for (let i = 0; i + 2 < out.length; i++) {
+        if (out[i].t === '(' && out[i + 1].t === 'n' && out[i + 2].t === ')') { out.splice(i + 2, 1); out.splice(i, 1); changed = true; removed = true; break; }
+      }
+    }
+    return { tokens: out, removed: removed };
+  }
+  function compute(op, a, b) {
+    if (op === '+') return a + b;
+    if (op === '−') return a - b;
+    if (op === '×') return a * b;
+    return a / b;
+  }
+  function opOk(op, a, b) {
+    if (op === '−') return a >= b;
+    if (op === '÷') return b !== 0 && a % b === 0;
+    return true;
+  }
+  function reasonKind(tokens, idx) {
+    const inParen = groupsOf(tokens).some((g) => idx > g.start && idx < g.end);
+    return { inParen: inParen, md: !!MD[tokens[idx].v] };
+  }
+  function applyOp(tokens, idx) {
+    const a = tokens[idx - 1].v, b = tokens[idx + 1].v, op = tokens[idx].v;
+    const res = compute(op, a, b);
+    const why = reasonKind(tokens, idx);
+    const nt = tokens.slice(0, idx - 1).concat([{ t: 'n', v: res }], tokens.slice(idx + 2));
+    const c = cleanParens(nt);
+    return { tokens: c.tokens, a: a, b: b, op: op, res: res, why: why, parenRemoved: c.removed };
+  }
+  function opSentence(r) {
+    const eq = r.a + ' ' + r.op + ' ' + r.b + ' = ' + r.res + '.';
+    let s;
+    if (r.why.inParen && r.why.md) s = 'Dans les parenthèses, on fait d’abord les × et ÷ : ' + eq;
+    else if (r.why.inParen) s = 'On commence par les parenthèses : ' + eq;
+    else if (r.why.md) s = 'Les × et ÷ passent avant les + et − (de gauche à droite) : ' + eq;
+    else s = 'Il ne reste que des + et −, de gauche à droite : ' + eq;
+    if (r.parenRemoved) s += ' Les parenthèses ont fini leur travail : on les enlève.';
+    return s;
+  }
+  function whyNot(tokens, idx) {
+    const gs = groupsOf(tokens);
+    const inner = gs.filter((g) => g.inner);
+    let s, e;
+    if (inner.length) {
+      const g = inner.find((g) => idx > g.start && idx < g.end);
+      if (!g) return 'paren';
+      s = g.start + 1; e = g.end - 1;
+    } else { s = 0; e = tokens.length - 1; }
+    let hasMD = false;
+    for (let i = s; i <= e; i++) if (tokens[i].t === 'o' && MD[tokens[i].v]) hasMD = true;
+    if (hasMD && !MD[tokens[idx].v]) return 'md';
+    return 'left';
+  }
+  const WHY_TEXT = {
+    paren: 'Regarde les parenthèses ( ) : on calcule toujours ce qui est dedans en premier.',
+    md: 'Les multiplications et les divisions passent avant les additions et les soustractions.',
+    left: 'Ces opérations ont la même priorité : on commence par celle qui est le plus à gauche.'
+  };
+  function solveSteps(tokens) {
+    const steps = [];
+    let cur = tokens.slice();
+    let guard = 0;
+    while (cur.length > 1 && guard++ < 50) {
+      const valid = Array.from(validOps(cur)).sort((x, y) => x - y);
+      const idx = valid[0];
+      const before = cur;
+      const r = applyOp(cur, idx);
+      steps.push({ before: before, idx: idx, a: r.a, b: r.b, op: r.op, res: r.res, why: r.why, parenRemoved: r.parenRemoved, after: r.tokens, text: opSentence(r) });
+      cur = r.tokens;
+    }
+    return { steps: steps, final: cur.length === 1 ? cur[0].v : NaN };
+  }
+  function finalOk(tokens) {
+    let cur = tokens.slice(), g = 0;
+    while (cur.length > 1 && g++ < 50) {
+      const idx = Array.from(validOps(cur)).sort((x, y) => x - y)[0];
+      const a = cur[idx - 1].v, b = cur[idx + 1].v, op = cur[idx].v;
+      if (!opOk(op, a, b)) return null;
+      const res = compute(op, a, b);
+      if (res > 150) return null;
+      cur = applyOp(cur, idx).tokens;
+    }
+    return cur[0].v;
+  }
+  function stripParens(tokens) { return tokens.filter((t) => t.t !== '(' && t.t !== ')'); }
+  function naiveLTR(tokens) {
+    const s = stripParens(tokens);
+    let v = s[0].v;
+    for (let i = 1; i < s.length; i += 2) v = compute(s[i].v, v, s[i + 1].v);
+    return v;
+  }
+  function buildTokens(nums, ops, parens) {
+    const out = [];
+    const opening = parens.slice().sort((x, y) => (y[1] - y[0]) - (x[1] - x[0]));
+    const closing = parens.slice().sort((x, y) => (x[1] - x[0]) - (y[1] - y[0]));
+    for (let k = 0; k < nums.length; k++) {
+      opening.forEach((p) => { if (p[0] === k) out.push({ t: '(' }); });
+      out.push({ t: 'n', v: nums[k] });
+      closing.forEach((p) => { if (p[1] === k) out.push({ t: ')' }); });
+      if (k < ops.length) out.push({ t: 'o', v: ops[k] });
+    }
+    return out;
+  }
+  const ALL_OPS = ['+', '−', '×', '÷'];
+  function genOps(level) {
+    for (let tries = 0; tries < 6000; tries++) {
+      let n, ops, parens = [], lo = 2, hi = 12;
+      if (level === 1) {
+        n = 3; hi = 9;
+        const md = pick(['×', '÷']), as = pick(['+', '−']);
+        ops = Math.random() < 0.5 ? [as, md] : [md, as];
+      } else if (level === 2) {
+        n = 4;
+        ops = [pick(ALL_OPS), pick(ALL_OPS), pick(ALL_OPS)];
+        const nmd = ops.filter((o) => MD[o]).length;
+        if (nmd === 0 || nmd === 3) continue;
+      } else if (level === 3) {
+        n = pick([3, 4]);
+        ops = []; for (let i = 0; i < n - 1; i++) ops.push(pick(ALL_OPS));
+        const cand = [];
+        for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) if (j - i + 1 < n) cand.push([i, j]);
+        parens = [pick(cand)];
+      } else {
+        n = 5; hi = 9;
+        ops = []; for (let i = 0; i < n - 1; i++) ops.push(pick(ALL_OPS));
+        parens = pick([[[0, 3], [1, 2]], [[1, 4], [2, 3]], [[0, 1], [2, 3]], [[0, 1], [3, 4]], [[1, 2], [3, 4]]]);
+      }
+      const nums = []; for (let i = 0; i < n; i++) nums.push(rnd(lo, hi));
+      const tokens = buildTokens(nums, ops, parens);
+      const f = finalOk(tokens);
+      if (f === null || f < 1) continue;
+      if (naiveLTR(tokens) === f) continue;
+      let allMatter = true;
+      for (let pi = 0; pi < parens.length; pi++) {
+        const rest = parens.filter((_, k) => k !== pi);
+        if (finalOk(buildTokens(nums, ops, rest)) === f) { allMatter = false; break; }
+      }
+      if (!allMatter) continue;
+      return tokens;
+    }
+    return parseExpr('3 + 4 × 5');
+  }
+
+  /* ---------------- Niveaux et exemples ---------------- */
+  const LEVELS = [
+    { n: 1, name: 'Recrue' },
+    { n: 2, name: 'Agent' },
+    { n: 3, name: 'Agent spécial' },
+    { n: 4, name: 'Maître' }
+  ];
+  const LEVEL_DESC = {
+    mult: ['2 chiffres × 1 chiffre', '3 chiffres × 1 chiffre', '2 chiffres × 2 chiffres', '3 chiffres × 2 chiffres'],
+    div: ['2 chiffres ÷ 1 chiffre, sans reste', '3 chiffres ÷ 1 chiffre, sans reste', 'Quotient à 3 chiffres, avec reste', 'Diviseur à 2 chiffres'],
+    ops: ['2 opérations', '3 opérations', 'Avec parenthèses', 'Parenthèses multiples']
+  };
+  const EXAMPLES = {
+    mult: [[47, 6], [346, 5], [38, 24], [426, 35]],
+    div: [[96, 3], [384, 8], [745, 6], [847, 23]],
+    ops: ['3 + 4 × 5', '18 − 6 ÷ 3 × 2', '( 7 + 5 ) × 3 − 4', '2 × ( 3 + ( 8 − 4 ) × 2 )']
+  };
+
+  function makeProblem(mission, level) {
+    if (mission === 'mult') return { kind: 'grid', layout: genMult(level) };
+    if (mission === 'div') return { kind: 'grid', layout: genDiv(level) };
+    const tokens = genOps(level);
+    return { kind: 'ops', tokens: tokens, solution: solveSteps(tokens) };
+  }
+  function makeExample(mission, level) {
+    const ex = EXAMPLES[mission][level - 1];
+    if (mission === 'mult') return { kind: 'grid', layout: buildMult(ex[0], ex[1]) };
+    if (mission === 'div') return { kind: 'grid', layout: buildDiv(ex[0], ex[1]) };
+    const tokens = parseExpr(ex);
+    return { kind: 'ops', tokens: tokens, solution: solveSteps(tokens) };
+  }
+
+  const API = {
+    buildMult: buildMult, buildDiv: buildDiv, genMult: genMult, genDiv: genDiv, genOps: genOps,
+    parseExpr: parseExpr, exprToString: exprToString, validOps: validOps, applyOp: applyOp, whyNot: whyNot, WHY_TEXT: WHY_TEXT,
+    opSentence: opSentence, solveSteps: solveSteps, makeProblem: makeProblem, makeExample: makeExample,
+    LEVELS: LEVELS, LEVEL_DESC: LEVEL_DESC, EXAMPLES: EXAMPLES, POS: POS
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API;
+  else root.Engine = API;
+})(typeof window !== 'undefined' ? window : this);
+
+</script>
+<script>
+(function () {
+  const E = window.Engine;
+  function grid(L, fixed, upTo) {
+    const vals = {};
+    L.steps.forEach((s, i) => { if (upTo === undefined || i < upTo) vals[s.r + ',' + s.c] = s.expected; });
+    const lines = {};
+    L.lines.forEach((l) => { for (let c = l.c1; c <= l.c2; c++) lines[l.r + ',' + c] = 1; });
+    const rowsT = L.rowKinds.map((k) => (k === 'carry' ? 'calc(var(--cs) * .62)' : 'var(--cs)')).join(' ');
+    let h = '<div class="grid" style="--cs:' + fixed + 'px;grid-template-columns:repeat(' + L.cols + ',var(--cs));grid-template-rows:' + rowsT + '" role="img" aria-label="Exemple : ' + L.statement + '">';
+    for (let r = 0; r < L.rows; r++) for (let c = 0; c < L.cols; c++) {
+      const key = r + ',' + c, cell = L.cells[key];
+      let cls = 'cell', txt = '';
+      if (L.rowKinds[r] === 'carry') cls += ' cr';
+      if (cell && cell.kind === 'static') { cls += ' st'; txt = cell.text; }
+      else if (cell) { cls += ' in'; txt = vals[key] === undefined ? '' : vals[key]; }
+      else if (L.rowKinds[r] === 'carry' && c === 0) { cls += ' lbl'; txt = 'ret.'; }
+      if (lines[key]) cls += ' lb';
+      if (L.bar && c === L.bar.col && r >= L.bar.fromRow) cls += ' bl';
+      h += '<div class="' + cls + '">' + txt + '</div>';
+    }
+    (L.downs || []).forEach((d) => {
+      if (vals[d.key] === undefined) return;
+      h += '<span class="dn" style="left:calc(var(--cs) * ' + (d.c + 0.5) + ' - 1.5px);top:calc(var(--cs) * 2 - 6px);height:calc(var(--cs) * ' + (d.toR - 2) + ' + 12px)"></span>';
+    });
+    return h + '</div>';
+  }
+  function put(id, html) { document.getElementById(id).innerHTML = html; }
+  put('ex-hero', grid(E.buildMult(47, 6), 40, 3) + '<p class="hero-cap">47 × 6 : la case jaune, c’est à toi.</p>');
+  document.querySelector('#ex-hero .grid').insertAdjacentHTML('beforeend', '');
+  put('ex-mult', grid(E.buildMult(38, 24), 26));
+  put('ex-div', grid(E.buildDiv(745, 6), 26));
+  const sol = E.solveSteps(E.parseExpr('18 − 6 ÷ 3 × 2'));
+  const tk = (t, used, i) => t.t === 'n' ? '<span class="tk' + (used !== undefined && i >= used - 1 && i <= used + 1 ? ' used' : '') + '">' + t.v + '</span>' : t.t === 'o' ? '<span class="tk' + (used !== undefined && i >= used - 1 && i <= used + 1 ? ' used' : '') + '">' + t.v + '</span>' : '<span class="tk p">' + t.t + '</span>';
+  let lines = sol.steps.map((s, k) => '<div class="ex-line' + '">' + (k ? '<span class="eq">=</span>' : '') + s.before.map((t, i) => tk(t, s.idx, i)).join('') + '</div>').join('');
+  const last = sol.steps[sol.steps.length - 1];
+  lines += '<div class="ex-line"><span class="eq">=</span>' + last.after.map((t, i) => tk(t)).join('') + '</div>';
+  put('ex-ops', '<div class="exprs">' + lines + '</div>');
+  // le premier exemple (hero) : case jaune sur la prochaine étape
+  const hs = E.buildMult(47, 6), nx = hs.steps[3];
+  const cells = document.querySelectorAll('#ex-hero .cell');
+  cells[nx.r * hs.cols + nx.c].classList.add('cur');
+})();
+
+</script>
+</body>
+</html>
