@@ -876,7 +876,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   const MARK = '<svg class="brand-mark" viewBox="0 0 38 38" aria-hidden="true"><rect x="2" y="2" width="34" height="34" rx="8" fill="#fff"/><path d="M13.5 2v34M24.5 2v34M2 13.5h34M2 24.5h34" stroke="#C6DAEA" stroke-width="1.5"/><rect x="14.5" y="14.5" width="9" height="9" fill="#FFD23F"/><rect x="2" y="2" width="34" height="34" rx="8" fill="none" stroke="#12203A" stroke-width="2.5"/></svg>';
   function topHTML() {
     return '<header class="wrap top"><button class="brand" data-act="home" aria-label="Retour à l’accueil">' + MARK + '<span class="brand-name"><span>Chiffre</span> à chiffre</span></button>' +
-      (S.name ? '<div class="agent-chip">Agent <b>' + esc(S.name) + '</b></div>' : '') + '</header>';
+      '<span style="display:flex;gap:10px;align-items:center"><a class="btn btn-small" href="index.html">← Page de garde</a>' +
+      (S.name ? '<div class="agent-chip">Agent <b>' + esc(S.name) + '</b></div>' : '') + '</span></header>';
   }
 
   /* ---------- accueil ---------- */
